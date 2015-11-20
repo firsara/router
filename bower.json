@@ -24,10 +24,10 @@
   "devDependencies": {
     "bootstrap": "~3.3.5",
     "handlebars": "~4.0.5",
-    "requirejs-hbs": "~0.1.1"
+    "requirejs-hbs": "~0.1.1",
+    "text": "~2.0.14"
   },
   "dependencies": {
-    "requirejs": "~2.1.21",
-    "text": "~2.0.14"
+    "requirejs": "~2.1.21"
   }
 }
