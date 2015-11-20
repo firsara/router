@@ -8,6 +8,7 @@ require.config({
   }
 });
 
+
 require(['router/index', 'helpers'], function(Router){
   Router.rewrite = false;
   Router.base = '/example/';
@@ -26,10 +27,14 @@ require(['router/index', 'helpers'], function(Router){
     $('body').append(layout.header);
     $('body').append(layout.content);
 
-    var main = {};
-    main.layout = layout;
-    main.router = new Router(main, routes);
-    main.router.parse(layout.header.get(0));
-    main.router.route();
+    $(document).on('click', '.save', function(e){
+      e.preventDefault();
+    });
+
+    var app = {};
+    app.layout = layout;
+    app.router = new Router(app, routes);
+    app.router.parse(layout.header.get(0));
+    app.router.route();
   });
 });
