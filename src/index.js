@@ -85,6 +85,7 @@ define(['./uri'], function(uri){
       var internalLink = true;
       var itemHref = elements[i].getAttribute('href');
 
+      if (elements[i].getAttribute('data-route') === 'false') internalLink = false;
       if (elements[i].getAttribute('target') === '_blank') internalLink = false;
       if (itemHref.indexOf('http://') !== -1 || itemHref.indexOf('https://') !== -1) {
         if (itemHref.indexOf(currentDomain) === -1) internalLink = false;
@@ -116,6 +117,7 @@ define(['./uri'], function(uri){
    * @param {String} path that should be switched to
    **/
   Router.prototype.to = function(path){
+    if (path.indexOf('http://') === -1 && path.indexOf('https://') === -1) path = Router.generate(path);
     history.pushState(null, null, path);
     this._urlChange();
   };
@@ -197,6 +199,26 @@ define(['./uri'], function(uri){
   };
 
   /**
+   * splits up path into individual parts and crops out empty items
+   * @method _splitPath
+   * @memberof Router
+   * @instance
+   * @private
+   **/
+  var _splitPath = function(path){
+    var tmp = path.split('/');
+    var path = [];
+
+    for (var i = 0, _len = tmp.length; i < _len; i++) {
+      if (tmp[i] !== '') {
+        path.push(tmp[i]);
+      }
+    }
+
+    return path;
+  };
+
+  /**
    * generates a full url to a specific route taking rewrite rules into account
    * @method generate
    * @memberof Router
@@ -258,11 +280,11 @@ define(['./uri'], function(uri){
     var params = [];
 
     if (! path) path = Router.get();
-    path = path.split('/');
+    path = _splitPath(path);
 
     for (var k in routes) {
       if (routes.hasOwnProperty(k)) {
-        var routePath = k.split('/');
+        var routePath = _splitPath(k);
         params = [];
 
         if (path.length !== routePath.length) continue;
