@@ -1,0 +1,33 @@
+{
+  "name": "router",
+  "main": "src",
+  "authors": [
+    "Fabian Irsara <info@fabianirsara.com>"
+  ],
+  "description": "Minimal router using requirejs without dependencies",
+  "moduleType": [],
+  "keywords": [
+    "router",
+    "frontend",
+    "history",
+    "html5"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap": "~3.3.5",
+    "handlebars": "~4.0.5",
+    "requirejs-hbs": "~0.1.1"
+  },
+  "dependencies": {
+    "requirejs": "~2.1.21",
+    "text": "~2.0.14"
+  }
+}

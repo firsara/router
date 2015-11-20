@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    {{#each this}}
+      <div class="col-md-4">
+        <h3>{{name}}</h3>
+        <p><strong>Email:</strong><br> {{email}}</p>
+        <p><strong>Address:</strong><br> {{address}}</p>
+        <p><a class="btn btn-default" href="{{showPath}}">Show</a></p>
+        <p><a class="btn btn-default" href="{{editPath}}">Edit</a></p>
+        <p><a class="btn btn-default" href="{{projectsPath}}">Projects</a></p>
+      </div>
+    {{/each}}
+  </div>
+</div>
